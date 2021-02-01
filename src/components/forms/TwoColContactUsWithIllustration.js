@@ -30,11 +30,14 @@ const Input = tw.input`border-2 px-5 py-3 rounded focus:outline-none font-medium
 
 const SubmitButton = tw(PrimaryButtonBase)`inline-block lg:ml-6 mt-6 lg:mt-0`
 
+
 export default ({
-  subheading = "Contact Us",
-  heading = <>Feel free to <span tw="text-primary-500">get in touch</span><wbr/> with us.</>,
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  submitButtonText = "Contact Me",
+  subheading = "Skontaktuj się z nami",
+  heading = <>Wykorzystaj olbrzymie <span tw="text-primary-500">możliwości innowacyjnej platformy</span><wbr/> i skontaktuj się z nami.</>,
+  description = `Jeśli masz pytania w zakresie funkcjonowania systemu ARKAD,
+  chciałbyś uzyskać dostęp do wersji bezpłatnej, a może interesuje Cię
+  tematyka zamówień publicznych`,
+  submitButtonText = 'Wyślij wiadomość',
   formAction = "#",
   formMethod = "get",
   textOnLeft = true,

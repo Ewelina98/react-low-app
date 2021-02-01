@@ -17,7 +17,7 @@ const Image = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
   props.imageContain ? tw`bg-contain bg-no-repeat` : tw`bg-cover`,
   props.imageShadow ? tw`shadow` : tw`shadow-none`,
-  tw`hidden lg:block rounded h-144 bg-center`
+  tw`hidden lg:block rounded h-72 bg-center`
 ]);
 
 const FAQContent = tw.div`lg:ml-12`;
@@ -52,9 +52,12 @@ export default ({
    */
   const defaultFaqs = [
     {
-      question: "Is lunch provided free of cost ?",
+      question: "Nie popełnisz błędów w nowej dokumentacji przetargowej - wypróbuj system ARKAD.",
       answer:
-        "Yes, it is, if you have a membership with us. Otherwise it is charged as per the menu. Some limits do apply as to how much items can be included in your lunch. This limit is enough for any one person and merely exists to discourage abusal of the system."
+        "- Nie popełnisz błędów w nowej dokumentacji przetargowej - wypróbuj system ARKAD. \n"
+        + "- Skorzystasz z opracowanych wzorów dla specyfikacji warunków zamówienia. \n"
+        + "- Wygenerujesz gotową do publikacji specyfikację warunków zamówienia. \n"
+        + "- Wygenerujesz ogłoszenia zgodnie ze wzorem ogłoszenia w Biuletynie Zamówień Publicznych, a także zgodnie ze wzorem ogłoszeń w Dzienniku Urzędowym Unii Europejskiej."
     },
     {
       question: "Do you have 2 Bedroom suites ?",
@@ -86,7 +89,7 @@ export default ({
     <Container>
       <Content>
         <TwoColumn>
-          <Column tw="hidden lg:block w-5/12 flex-shrink-0">
+          <Column tw="hidden lg:block w-3/12 flex-shrink-0">
             <Image imageContain={imageContain} imageShadow={imageShadow} imageSrc={imageSrc} />
           </Column>
           <Column>
@@ -106,7 +109,7 @@ export default ({
                     <Question>
                       <QuestionText>{faq.question}</QuestionText>
                       <QuestionToggleIcon>
-                        {activeQuestionIndex === index ? <MinusIcon /> : <PlusIcon />}
+                        {activeQuestionIndex === index ? <PlusIcon /> : <MinusIcon />}
                       </QuestionToggleIcon>
                     </Question>
                     <Answer
@@ -114,8 +117,8 @@ export default ({
                         open: { opacity: 1, height: "auto", marginTop: "16px" },
                         collapsed: { opacity: 0, height: 0, marginTop: "0px" }
                       }}
-                      initial="collapsed"
-                      animate={activeQuestionIndex === index ? "open" : "collapsed"}
+                      initial="open"
+                      animate={activeQuestionIndex === index ? "collapsed" : "open"}
                       transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                     >
                       {faq.answer}

@@ -46,14 +46,14 @@ const FeatureDescription = tw.div`mt-1 text-sm`;
 const PrimaryButton = tw(PrimaryButtonBase)`mt-8 md:mt-10 text-sm inline-block mx-auto md:mx-0`;
 
 export default ({
-  subheading = "Our Expertise",
+  subheading = "Nasze doświadczenie",
   heading = (
     <>
-      We have the most <span tw="text-primary-500">professional</span> marketing team.
+      Mamy najlepszy <span tw="text-primary-500">zespół specjalistów</span> w zakresie prawa zamówień publicznych.
     </>
   ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  primaryButtonText = "See Our Portfolio",
+  description = "Jesteśmy praktykami, którzy przez lata zdobywali doświadczenie pracując dla wielu instytucji publicznych w Polsce. Wiemy jak przygotować postępowanie o udzielenie zamówienia publicznego dla szpitala, instytucji samorządowej, uczelni i innych zamawiających.",
+  primaryButtonText = "Przekonaj się, jak łatwo możesz z tego skorzystać",
   primaryButtonUrl = "https://timerse.com",
   features = null,
   textOnLeft = true
@@ -67,13 +67,13 @@ export default ({
   const defaultFeatures = [
     {
       Icon: BriefcaseIcon,
-      title: "Professionalism",
-      description: "We have the best professional marketing people across the globe just to work with you."
+      title: "PROFESJONALIZM",
+      description: "Posiadamy najlepszy zespół specjalistów, którzy swoje doświadczenie z zamówieniami publicznymi budowali latami."
     },
     {
       Icon: MoneyIcon,
-      title: "Affordable",
-      description: "We promise to offer you the best rate we can - at par with the industry standard."
+      title: "ZGODNOŚĆ Z POLSKIM PRAWEM",
+      description: "Innowacyjna aplikacja powstała z idei stworzenia wsparcia dla pracowników instytucji publicznych, w całkowitej zgodności z najnowszymi wytycznymi Ustawy prawo zamówień publicznych"
     }
   ];
 
