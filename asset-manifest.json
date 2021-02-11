@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/react-low-app/static/css/main.00770f9f.chunk.css",
-    "main.js": "/react-low-app/static/js/main.3ef89083.chunk.js",
-    "main.js.map": "/react-low-app/static/js/main.3ef89083.chunk.js.map",
+    "main.js": "/react-low-app/static/js/main.8577fd8f.chunk.js",
+    "main.js.map": "/react-low-app/static/js/main.8577fd8f.chunk.js.map",
     "runtime-main.js": "/react-low-app/static/js/runtime-main.fd5dcdf3.js",
     "runtime-main.js.map": "/react-low-app/static/js/runtime-main.fd5dcdf3.js.map",
     "static/css/2.3a395901.chunk.css": "/react-low-app/static/css/2.3a395901.chunk.css",
-    "static/js/2.b9226c9d.chunk.js": "/react-low-app/static/js/2.b9226c9d.chunk.js",
-    "static/js/2.b9226c9d.chunk.js.map": "/react-low-app/static/js/2.b9226c9d.chunk.js.map",
+    "static/js/2.08dc0e20.chunk.js": "/react-low-app/static/js/2.08dc0e20.chunk.js",
+    "static/js/2.08dc0e20.chunk.js.map": "/react-low-app/static/js/2.08dc0e20.chunk.js.map",
     "index.html": "/react-low-app/index.html",
-    "precache-manifest.e36c83c398df3e934af9e62d5ea04525.js": "/react-low-app/precache-manifest.e36c83c398df3e934af9e62d5ea04525.js",
+    "precache-manifest.2b625c445309b28f2bca9cc52389264d.js": "/react-low-app/precache-manifest.2b625c445309b28f2bca9cc52389264d.js",
     "service-worker.js": "/react-low-app/service-worker.js",
     "static/css/2.3a395901.chunk.css.map": "/react-low-app/static/css/2.3a395901.chunk.css.map",
     "static/css/main.00770f9f.chunk.css.map": "/react-low-app/static/css/main.00770f9f.chunk.css.map",
-    "static/js/2.b9226c9d.chunk.js.LICENSE.txt": "/react-low-app/static/js/2.b9226c9d.chunk.js.LICENSE.txt",
+    "static/js/2.08dc0e20.chunk.js.LICENSE.txt": "/react-low-app/static/js/2.08dc0e20.chunk.js.LICENSE.txt",
     "static/media/briefcase.svg": "/react-low-app/static/media/briefcase.8aa459ae.svg",
     "static/media/customer-support-illustration.svg": "/react-low-app/static/media/customer-support-illustration.6e80729a.svg",
     "static/media/customize-icon.svg": "/react-low-app/static/media/customize-icon.7c1a6f97.svg",
@@ -39,8 +39,8 @@
   "entrypoints": [
     "static/js/runtime-main.fd5dcdf3.js",
     "static/css/2.3a395901.chunk.css",
-    "static/js/2.b9226c9d.chunk.js",
+    "static/js/2.08dc0e20.chunk.js",
     "static/css/main.00770f9f.chunk.css",
-    "static/js/main.3ef89083.chunk.js"
+    "static/js/main.8577fd8f.chunk.js"
   ]
 }
