@@ -10,16 +10,16 @@ import { fetchData } from "services/fetshData";
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
 
-export function KnowledgePage() {
+export default function KnowledgePage() {
   const links = [
     <NavLinks key={1}>
-      <NavLink href="/#">Przygotuj przetarg</NavLink>
-      <NavLink href="/#">Baza wiedzy</NavLink>
-      <NavLink href="/#">Kontakt</NavLink>
-      <NavLink href="/#" tw="lg:ml-12!">
+      <NavLink to="/#">Przygotuj przetarg</NavLink>
+      <NavLink to="/#">Baza wiedzy</NavLink>
+      <NavLink to="/#">Kontakt</NavLink>
+      <NavLink to="/#" tw="lg:ml-12!">
         Logowanie
       </NavLink>
-      <PrimaryLink href="/#">Rejestracja</PrimaryLink>
+      <PrimaryLink to="/#">Rejestracja</PrimaryLink>
     </NavLinks>
   ];
 

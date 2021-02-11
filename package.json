@@ -1,6 +1,6 @@
 {
-  "name": "treact",
-  "homepage": "http://10.8.0.1:10097",
+  "name": "react-low-app",
+  "homepage": "https://ewelina98.github.io/react-low-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -31,7 +31,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "prod": "npm run clean && npm run build && npm run deploy",
+    "clean": "rm -rf build"
   },
   "eslintConfig": {
     "extends": "react-app"

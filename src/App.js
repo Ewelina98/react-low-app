@@ -1,20 +1,16 @@
 import "tailwindcss/dist/base.css";
 import "styles/globalStyles.css";
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "pages/Home";
-import { KnowledgePage } from "pages/KnowledgePage";
+import KnowledgePage from "pages/KnowledgePage";
 
 export default function App() {
   return (
     <Router>
       <Switch>
-       <Route path="/knowledge">
-          <KnowledgePage />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Route path="/knowledge" component={KnowledgePage} />
       </Switch>
     </Router>
   );
