@@ -13,7 +13,7 @@ export const Panel = props => {
     >
       {selectedIndex === index && (
         <Box  component="div">
-          <div style={{fontSize: '20px', marginRight: '200'}}>{children}</div>
+          {children}
         </Box>
       )}
     </div>

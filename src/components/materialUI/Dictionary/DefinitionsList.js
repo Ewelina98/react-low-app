@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Table, TableBody, TableContainer, TableCell, Paper, TableRow, TableHead } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { Table, TableBody, TableContainer, TableCell, Paper, TableRow, TableHead, CircularProgress, Typography } from "@material-ui/core";
 import { SearchInput } from "../SearchInput"
 import { Pagination } from "@material-ui/lab";
+import { fetchDefinitions } from "services/fetchDefinitions";
 
-const useStyles = makeStyles({
-  table: {
-    maxWidth: 700,
-    width: 700,
-    margin: 20,
-    paddingTop: 20,
-  },
-});
-
-export const DefinitionsList = ({ definitions, page, setPage }) => {
-  const classes = useStyles();
-
+export const DefinitionsList = () => {
   const [search, setSearch] = useState('');
-  const [list, setList] = useState(definitions);
   const [isEmpty, setIsEmpty] = useState(false);
+
+  const [page, setPage] = useState(1);
+  const [definitions, setDefinitions] = useState(null);
+  const [list, setList] = useState(null);
+
+  useEffect(() => {
+    fetchDefinitions(page)
+      .subscribe((presentables) => {
+        setDefinitions(presentables);
+        setList(presentables);
+      });
+  }, [page])
 
   const searchOnList = (value) => {
     if (list) {
@@ -30,22 +30,19 @@ export const DefinitionsList = ({ definitions, page, setPage }) => {
   }
 
   const handleInputChange = (event) => {
+    setList(definitions);
     setIsEmpty(false);
     
     const { value } = event.target;
     setSearch(value);
-
-
-    if (value === '') {
-        setList(definitions);
-    } else {
-        searchOnList(value);
+    if (value !== '') {
+      searchOnList(value);
     }
   }
 
   const renderRows = () => {
-     if (!list || isEmpty) {
-        return <Row name={'Nie znalezniono artykułu'} />
+     if (!list || list.length === 0 || isEmpty) {
+        return <Row name={'Brak'} />
       }
 
       return list.map((definition, index) => 
@@ -53,21 +50,27 @@ export const DefinitionsList = ({ definitions, page, setPage }) => {
       );
   }
 
+  const onPageChange = (_event, _page) => setPage(_page);
+
+  if (!definitions) {
+    return <CircularProgress color="secondary" />;
+  }
+
   return (
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+      <Table aria-label="simple table">
         <TableHead>
-          <TableRow>
-            <Pagination count={4} color="primary" onChange={(_event, page) => setPage(page)} />
-          </TableRow>
           <TableRow>
             <TableCell>
                 <SearchInput value={search} isDisabled={!list} onChange={handleInputChange} />
             </TableCell>
+            <TableCell align="right" style={{ display: 'flex', flexGrow: 1 }}>
+              <Pagination count={3} color="primary" onChange={onPageChange} />
+            </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Pojęcie</TableCell>
-            <TableCell align="right">Definicja</TableCell>
+            <TableCell>{'Pojęcie'}</TableCell>
+            <TableCell align="right">{'Definicja'}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -78,11 +81,9 @@ export const DefinitionsList = ({ definitions, page, setPage }) => {
   );
 }; 
 
-const Row = ({ name, explanation }) => {
-    return (
-        <TableRow>
-          <TableCell component="td" scope="row">{name}</TableCell>
-          {explanation && <TableCell component="td" align="right">{explanation}</TableCell>}
-        </TableRow>
-    );
-};
+const Row = ({ name, explanation }) => (
+  <TableRow>
+    <TableCell component="td" scope="row">{name}</TableCell>
+    {explanation && <TableCell component="td" align="left">{explanation}</TableCell>}
+  </TableRow>
+);

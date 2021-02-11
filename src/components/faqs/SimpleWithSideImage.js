@@ -60,20 +60,20 @@ export default ({
         + "- Wygenerujesz ogłoszenia zgodnie ze wzorem ogłoszenia w Biuletynie Zamówień Publicznych, a także zgodnie ze wzorem ogłoszeń w Dzienniku Urzędowym Unii Europejskiej."
     },
     {
-      question: "Do you have 2 Bedroom suites ?",
+      question: "Dlaczego warto skorzystać z pomocy Generatora:",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "Wypełniając pola wskazane przez system jednocześnie uczysz się nowej ustawy, łącząc teorię z praktyką. Nie pominiesz żadnego obowiązkowego elementu specyfikacji warunków zamówienia. Z pomocą Generatora wypełnisz dokumenty konieczne do przygotowania i przeprowadzenia postępowania przetargowego. Skorzystasz ze słownika pojęć (wraz z odwołaniem do aktów prawnych).\n "
+        + "Otrzymasz na telefon/email powiadomienia o ważnych terminach w Twoim przetargu. Będziesz mieć dostęp do kalendarza przetargów przez siebie przygotowywanych, gdzie automatycznie zapisywać się będą ważne terminy w każdym z przetargów. Nie musisz korzystać z czasochłonnych szkoleń."
     },
     {
-      question: "Are Wi-Fi costs included in the price ?",
+      question: "Dodatkowe zalety Generatora:",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "- łatwość w obsłudze, \n"
+        +"- czytelny interfejs, \n"
+        +"- intuicyjne podpowiedzi, \n"
+        +"- obszerna baza wiedzy, \n"
+        +"- możliwość konsultacji z ekspertem. \n"
     },
-    {
-      question: "Where can I reach you for support ?",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    }
   ];
 
   if (!faqs || faqs.length === 0) faqs = defaultFaqs;
