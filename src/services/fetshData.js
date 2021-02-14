@@ -33,7 +33,7 @@ function buildArticlesCardsPresentables(sections, chapters, subChapters, article
             .map(a => ({
                 content: a.content,
                 id: extractId(a[ID]),
-                title: `Artykuł ${extractId(a[ID])}`,
+                title: `Artykuł ${a.localNumber}`,
             })),
         hasChapters: chapters.some(chapter => chapter.section === section[ID]),
         chapters: chapters
@@ -44,7 +44,7 @@ function buildArticlesCardsPresentables(sections, chapters, subChapters, article
                     .map(a => ({
                         content: a.content,
                         id: extractId(a[ID]),
-                        title: `Artykuł ${extractId(a[ID])}`,
+                        title: `Artykuł ${a.localNumber}`,
                     }));
 
                 const subChaptersChapter = subChapters.filter(sub => sub.chapter === chapter[ID]);

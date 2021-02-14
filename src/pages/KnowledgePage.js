@@ -19,7 +19,9 @@ export default function KnowledgePage() {
       <NavLink to="/#" tw="lg:ml-12!">
         Logowanie
       </NavLink>
-      <PrimaryLink to="/#">Rejestracja</PrimaryLink>
+      <PrimaryLink to="/register">
+        Rejestracja
+      </PrimaryLink>
     </NavLinks>
   ];
 
@@ -37,7 +39,7 @@ export default function KnowledgePage() {
             <Header links={links}/>
             <ContentWithPaddingXl>
                 <HeadingRow style={{marginBottom: "50px"}}>
-                    <Heading>{'Baza Wiedzy'}</Heading>
+                    <Heading>Baza Wiedzy</Heading>
                 </HeadingRow>
                 <Container>
                   <VerticalTabs articlesCard={articlesCardPresentable} />

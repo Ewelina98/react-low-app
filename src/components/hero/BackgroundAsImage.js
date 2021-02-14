@@ -46,7 +46,6 @@ export default () => {
   const navLinks = [
     <NavLinks key={1}>
       
-      
       <NavLink to="#">
        Przygotuj przetarg
       </NavLink>
@@ -59,11 +58,14 @@ export default () => {
         Kontakt
       </NavLink>
     </NavLinks>,
+
     <NavLinks>
-      <NavLink to="/#" tw="lg:ml-12!">
+      <NavLink to="#" tw="lg:ml-12!">
         Logowanie
       </NavLink>
-      <PrimaryLink css={tw`rounded-full`} to="/#">Rejestracja</PrimaryLink>
+      <PrimaryLink css={tw`rounded-full`} to="/register">
+        Rejestracja
+      </PrimaryLink>
     </NavLinks>
     
   ];
