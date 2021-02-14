@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fd333d6e47c36bfd6d3752819723a70f",
+    "revision": "4d06fbbc7951695615b048c18e22b349",
     "url": "/index.html"
   },
   {
-    "revision": "0314543dfd6913e87456",
+    "revision": "ccbdabcc71585d58adc7",
     "url": "/static/css/2.3a395901.chunk.css"
   },
   {
-    "revision": "e1b12dd027f7b9bdc894",
+    "revision": "e29533d19baa53fb045f",
     "url": "/static/css/main.00770f9f.chunk.css"
   },
   {
-    "revision": "0314543dfd6913e87456",
-    "url": "/static/js/2.d1af607e.chunk.js"
+    "revision": "ccbdabcc71585d58adc7",
+    "url": "/static/js/2.0e15fadc.chunk.js"
   },
   {
     "revision": "91e530949f0293150f9619e9ba345302",
-    "url": "/static/js/2.d1af607e.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.0e15fadc.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e1b12dd027f7b9bdc894",
-    "url": "/static/js/main.c11ad775.chunk.js"
+    "revision": "e29533d19baa53fb045f",
+    "url": "/static/js/main.0e0ef28c.chunk.js"
   },
   {
     "revision": "9d56b0ea2705241215be",
@@ -60,6 +60,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/herobg.f419b4bf.jpg"
   },
   {
+    "revision": "6c3aec23252e8674def010db7d1c3b78",
+    "url": "/static/media/log-in.6c3aec23.svg"
+  },
+  {
+    "revision": "60e77202beb2649ae04467f515de60ad",
+    "url": "/static/media/login-illustration.60e77202.svg"
+  },
+  {
     "revision": "f9776f55173cd40b2b3f3fed1c7443c4",
     "url": "/static/media/logo.f9776f55.svg"
   },
@@ -84,6 +92,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/shield-icon.297d50a2.svg"
   },
   {
+    "revision": "527babdb98bf8a457080cb1de19ebfa1",
+    "url": "/static/media/signup-illustration.527babdb.svg"
+  },
+  {
     "revision": "345871b443e4f5f841bedccf11a61859",
     "url": "/static/media/simple-icon.345871b4.svg"
   },
@@ -102,6 +114,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "7189052ca672d113f057d9a4f3cb5efe",
     "url": "/static/media/twitter-icon.7189052c.svg"
+  },
+  {
+    "revision": "5047d00469e004c51f6b14e245c66d6f",
+    "url": "/static/media/user-plus.5047d004.svg"
   },
   {
     "revision": "b0200bf7cbbb26c32989e7a0e4d19eef",
