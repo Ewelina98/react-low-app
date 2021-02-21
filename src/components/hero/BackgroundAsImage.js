@@ -60,7 +60,7 @@ export default () => {
     </NavLinks>,
 
     <NavLinks>
-      <NavLink to="#" tw="lg:ml-12!">
+      <NavLink to="/login" tw="lg:ml-12!">
         Logowanie
       </NavLink>
       <PrimaryLink css={tw`rounded-full`} to="/register">

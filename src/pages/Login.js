@@ -5,11 +5,10 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import {css} from "styled-components/macro"; //eslint-disable-line
 import illustration from "images/login-illustration.svg";
-import logo from "images/logo.svg";
-import googleIconImageSrc from "images/google-icon.png";
-import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { Link } from "react-router-dom";
+import { LoginForm } from "components/LoginForm";
+import { fetchLogin } from "services/fetchLogin";
 
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
@@ -37,17 +36,6 @@ const SocialButton = styled.a`
 const DividerTextContainer = tw.div`my-12 border-b text-center relative`;
 const DividerText = tw.div`leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform -translate-y-1/2 absolute inset-x-0 top-1/2 bg-transparent`;
 
-const Form = tw.form`mx-auto max-w-xs`;
-const Input = tw.input`w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5 first:mt-0`;
-const SubmitButton = styled.button`
-  ${tw`mt-5 tracking-wide font-semibold bg-primary-500 text-gray-100 w-full py-4 rounded-lg hover:bg-primary-900 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
-  .icon {
-    ${tw`w-6 h-6 -ml-2`}
-  }
-  .text {
-    ${tw`ml-3`}
-  }
-`;
 const IllustrationContainer = tw.div`sm:rounded-r-lg flex-1 bg-purple-100 text-center hidden lg:flex justify-center`;
 const IllustrationImage = styled.div`
   ${props => `background-image: url("${props.imageSrc}");`}
@@ -57,54 +45,44 @@ const IllustrationImage = styled.div`
 export default ({
   logoLinkUrl = "#",
   illustrationImageSrc = illustration,
-  headingText = "Zaloguj się do Platformy Przetargowej",  
-  socialButtons = [
-    {
-      iconImageSrc: googleIconImageSrc,
-      text: "Sign In With Google",
-      url: "https://google.com"
-    },
-    {
-      iconImageSrc: twitterIconImageSrc,
-      text: "Sign In With Twitter",
-      url: "https://twitter.com"
-    }
-  ],
+  headingText = "Zaloguj się do Platformy Przetargowej",
   submitButtonText = "Zaloguj się",
   SubmitButtonIcon = LoginIcon,
   forgotPasswordUrl = "#",
   signupUrl = "#",
-
 }) => (
   <AnimationRevealPage>
     <Container>
       <Content>
         <MainContainer>
           <LogoLink to={'/'}>
-            <LogoTitle >ARKAD</LogoTitle>
+            <LogoTitle>ARKAD</LogoTitle>
           </LogoLink>
+
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <Form>
-                <Input type="email" placeholder="Email" required />
-                <Input type="password" placeholder="Hasło" required />
-                <SubmitButton type="submit">
-                  <SubmitButtonIcon className="icon" />
-                  <span className="text">{submitButtonText}</span>
-                </SubmitButton>
-              </Form>
+              
+              <LoginForm onSubmit={(email, password) => {
+                fetchLogin(email, password).subscribe(
+                  user => console.log('login success', user),
+                  error => console.log('is login error', error),
+                )
+              }} />
+              
               <p tw="mt-6 text-xs text-gray-600 text-center">
                 <Link to={'/'} tw="border-b border-gray-500 border-dotted">
                   Zapomniałeś hasła?
                 </Link>
               </p>
+
               <p tw="mt-8 text-sm text-gray-600 text-center">
                 Nie posiadasz konta?{" "}
                 <Link to={'/register'} tw="border-b border-gray-500 border-dotted">
                   Zarejestruj się
                 </Link>
               </p>
+
             </FormContainer>
           </MainContent>
         </MainContainer>

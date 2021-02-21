@@ -8,8 +8,6 @@ const AjaxMethod = {
 }
 
 export class NetworkingService {
-    TIMEOUT_IN_MS = 30000;
-
     constructor(baseUrl, ajax) {
         this.baseUrl = baseUrl;
         this.ajax = ajax;
@@ -19,6 +17,12 @@ export class NetworkingService {
         const url = buildEndpointURL(this.baseUrl, endpoint);
 
         return this.request(url, AjaxMethod.GET, headers).pipe(map(({response}) => response));
+    }
+
+    post(endpoint, body, headers) {
+        const url = buildEndpointURL(this.baseUrl, endpoint);
+
+        return this.request(url, AjaxMethod.POST, headers, body).pipe(map(({response}) => response));
     }
 
     request(url, method, headers, body) {

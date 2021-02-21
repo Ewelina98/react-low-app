@@ -5,10 +5,12 @@ import { ArticlesService } from "../services/ArticlesService";
 import { NetworkingService } from "../services/NetworkingService";
 import { DefinitionsService } from "../services/DefinitionsService";
 import { baseUrl } from "services/config";
+import { LoginService } from "services/LoginService";
 
 const networkingService = new NetworkingService(baseUrl, ajax);
 
 export const dependencies = {
+    loginService: new LoginService(networkingService),
     chaptersService: new ChaptersService(networkingService),
     articlesService: new ArticlesService(networkingService),
     sectionsService: new SectionsService(networkingService),

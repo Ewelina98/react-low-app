@@ -16,7 +16,7 @@ export default function KnowledgePage() {
       <NavLink to="/#">Przygotuj przetarg</NavLink>
       <NavLink to="/#">Baza wiedzy</NavLink>
       <NavLink to="/#">Kontakt</NavLink>
-      <NavLink to="/#" tw="lg:ml-12!">
+      <NavLink to="/login" tw="lg:ml-12!">
         Logowanie
       </NavLink>
       <PrimaryLink to="/register">
