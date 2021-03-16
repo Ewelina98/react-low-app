@@ -7,6 +7,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import illustration from "images/signup-illustration.svg";
 import { Link } from "react-router-dom";
 import { RegisterStepper } from "components/materialUI/Stepper/RegisterStepper";
+import { fetchRegister } from "services/fetchRegister";
 
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
@@ -39,7 +40,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <RegisterStepper />
+              <RegisterStepper onSubmit={fetchRegister} />
 
               <p tw="mt-8 text-sm text-gray-600 text-center">
                 Masz już konto?{" "}

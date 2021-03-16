@@ -24,16 +24,14 @@ export const ArticleCotentCard = ({ article: { content, title } }) => {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <span ref={spanRef} />
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+          {title}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          <span ref={spanRef} />
+        </Typography>
+      </CardContent>
     </Card>
   );
 }

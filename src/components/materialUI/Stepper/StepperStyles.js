@@ -14,5 +14,16 @@ export const useStyles = makeStyles((theme) => ({
     resetContainer: {
       padding: theme.spacing(3),
     },
+    input: {
+      margin: theme.spacing(2),
+      minWidth: '100%',
+    },
+    formControl: {
+      margin: theme.spacing(2),
+      minWidth: '100%',
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
   }));
-  
+   

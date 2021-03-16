@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArticlesCardHeader } from "./ArticlesCardHeader";
 import { ArticlesCardRow } from "./ArticlesCardRow";
 import { useArticlesStyles } from "./ArticlesStyles";
@@ -97,8 +97,8 @@ export const ArticlesCard = ({ articlesCard }) => {
                     </ArticlesCardRow>
                 );
             })}
-    {selectedChapter && <ArticlesDialog chapter={selectedChapter} isOpen={isChapterDialogOpen} onClose={handleClose} />}
-    {selectedArticle && <ArticlesDialog article={selectedArticle} isOpen={isArticleDialogOpen} onClose={handleClose} />}
+            {selectedChapter && <ArticlesDialog chapter={selectedChapter} isOpen={isChapterDialogOpen} onClose={handleClose} />}
+            {selectedArticle && <ArticlesDialog article={selectedArticle} isOpen={isArticleDialogOpen} onClose={handleClose} />}
         </div>
     )
 };

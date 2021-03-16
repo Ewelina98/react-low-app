@@ -25,12 +25,13 @@ export default function KnowledgePage() {
     </NavLinks>
   ];
 
-  const [articlesCardPresentable, setArticlesCardPresentable] = useState(null); 
-  
+  const [articlesCardPresentable, setArticlesCardPresentable] = useState(null);
 
   useEffect(() => {
       fetchData()
-        .subscribe((presentables) => setArticlesCardPresentable(presentables));
+        .subscribe((presentables) => {
+          setArticlesCardPresentable(presentables);
+        });
   }, [fetchData]);
 
 

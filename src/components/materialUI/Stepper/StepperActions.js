@@ -22,7 +22,7 @@ export const StepperActions = props => {
                 onClick={handleBack}
                 className={classes.button}
             >
-                {'Back'}
+                {'Wróć'}
             </Button>
             <Button
                 variant="contained"
@@ -30,7 +30,7 @@ export const StepperActions = props => {
                 onClick={handleNext}
                 className={classes.button}
             >
-                {props.isNext ? 'Next' : 'Finish'}
+                {props.isNext ? 'Następne' : 'Wyślij'}
             </Button>
         </div>
         </div>

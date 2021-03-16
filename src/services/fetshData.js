@@ -1,155 +1,167 @@
-import { of, concat, combineLatest } from "rxjs";
+import { combineLatest, concat, of } from "rxjs";
 import { map, switchMap, catchError } from "rxjs/operators";
 import { dependencies } from "../dependencies/Dependeencies";
 import { ID, Members } from "../services/config";
 
-export function fetchData() {
-    return fetchAllArticles().pipe(
-        switchMap(articles => {
-            return fetchAllChapters().pipe(
-                switchMap(chapters => {
-                    return fetchAllSubChapters().pipe(
-                        switchMap(subChapters => {
-                            return fetchAllSections().pipe(
-                                map(sections => buildArticlesCardsPresentables(sections, chapters, subChapters, articles)),
-                            );
-                        }),
-                    );
-                }),
-            );
-        }),
-        catchError(() => of(null)),
-    );
+export function fetchAllArticlesMapped() {
+  return fetchAllArticles().pipe(
+    map(mapArticles),
+    catchError(() => of(null)),
+  )
 }
 
-function buildArticlesCardsPresentables(sections, chapters, subChapters, articles) {
-    return sections.map(section => ({
-        section: {
-            number: extractId(section[ID]),
-            title: section.name,
-        },
-        articles: articles
-            .filter(article => article.section === section[ID])
-            .map(a => ({
-                content: a.content,
-                id: extractId(a[ID]),
-                title: `Artykuł ${a.localNumber}`,
-            })),
-        hasChapters: chapters.some(chapter => chapter.section === section[ID]),
-        chapters: chapters
-            .filter(chapter => chapter.section === section[ID])
-            .map(chapter => {
-                const articlesChapter = articles
-                    .filter(a => a.chapter === chapter[ID])
-                    .map(a => ({
-                        content: a.content,
-                        id: extractId(a[ID]),
-                        title: `Artykuł ${a.localNumber}`,
-                    }));
+export function fetchData() {
+  return fetchAllArticles().pipe(
+    switchMap((articles) => {
+      return fetchAllChapters().pipe(
+        switchMap((chapters) => {
+          return fetchAllSubChapters().pipe(
+            switchMap((subChapters) => {
+              return fetchAllSections().pipe(
+                map((sections) => {
+                  const articlesCard = buildArticlesCardsPresentables(
+                    sections,
+                    chapters,
+                    subChapters,
+                    articles
+                  );
 
-                const subChaptersChapter = subChapters.filter(sub => sub.chapter === chapter[ID]);
-                const isSubChapters = subChaptersChapter.length > 0;
-                
-                let subsWithArticles = [];
-                if (isSubChapters) {
-                    subsWithArticles = subChaptersChapter.map(sub => ({
-                        number: sub.localNumber.toString(),
-                        title: sub.name,
-                        articles: articlesChapter,
-                    }));
-                }
+                  return articlesCard;
+                })
+              );
+            })
+          );
+        })
+      );
+    }),
+    catchError(() => of(null))
+  );
+}
 
-                return {
-                    number: chapter.localNumber.toString(),
-                    title: chapter.name,
-                    articles: isSubChapters ? undefined : articlesChapter,
-                    subChapters: isSubChapters ? subsWithArticles : undefined,
-                    hasSubChapters: isSubChapters,
-                };
-            }),
-        }),
-    );
+function buildArticlesCardsPresentables(
+  sections,
+  chapters,
+  subChapters,
+  articles
+) {
+  return sections.map((section) => ({
+    section: {
+      number: extractId(section[ID]),
+      title: section.name,
+    },
+    articles: articles
+      .filter((article) => article.section === section[ID])
+      .map((a) => ({
+        content: a.content,
+        id: extractId(a[ID]),
+        title: `Artykuł ${a.localNumber}`,
+      })),
+    hasChapters: chapters.some((chapter) => chapter.section === section[ID]),
+    chapters: chapters
+      .filter((chapter) => chapter.section === section[ID])
+      .map((chapter) => {
+        const articlesChapter = articles.filter(
+          (a) => a.chapter === chapter[ID]
+        );
+
+        const subChaptersChapter = subChapters.filter(
+          (sub) => sub.chapter === chapter[ID]
+        );
+        const isSubChapters = subChaptersChapter.length > 0;
+
+        let subsWithArticles = [];
+        if (isSubChapters) {
+          subsWithArticles = subChaptersChapter.map((sub) => ({
+            number: sub.localNumber.toString(),
+            title: sub.name,
+            articles: mapArticles(
+              articlesChapter.filter((a) => a.subsection === sub[ID])
+            ),
+          }));
+        }
+
+        return {
+          number: chapter.localNumber.toString(),
+          title: chapter.name,
+          articles: isSubChapters ? undefined : mapArticles(articlesChapter),
+          subChapters: isSubChapters ? subsWithArticles : undefined,
+          hasSubChapters: isSubChapters,
+        };
+      }),
+  }));
+}
+
+function mapArticles(arr) {
+  return arr.map((a) => ({
+    content: a.content,
+    id: extractId(a[ID]),
+    title: `Artykuł ${a.localNumber}`,
+  }));
 }
 
 function fetchAllArticles() {
-    let page = 1;
-    const total = 21;
-    const articlesObs = [];
+  let page = 1;
+  const total = 21;
+  const articlesObs = [];
 
-    while(page <= total){
-        articlesObs.push(fetchArticles(page));
-        page += 1;
-    }
+  while (page <= total) {
+    articlesObs.push(fetchArticles(page));
+    page += 1;
+  }
 
-    return concat(
-                combineLatest(...articlesObs),
-           ).pipe(
-                map(articlesArr => articlesArr.flat()),
-           );
+  return concat(combineLatest(...articlesObs)).pipe(
+    map((articlesArr) => articlesArr.flat())
+  );
 }
 
 function fetchArticles(page) {
-    const { articlesService } = dependencies;
-    return articlesService.getArticles(page).pipe(
-        map(data => data[Members]),
-    );
+  const { articlesService } = dependencies;
+  return articlesService.getArticles(page).pipe(map((data) => data[Members]));
 }
 
 function fetchAllChapters() {
-    return fetchChapters(1).pipe(
-        switchMap(data1 => {
-            return fetchChapters(2).pipe(
-                map(data2 => {
-                    return [
-                        ...data1,
-                        ...data2
-                    ]
-                }),
-            );
+  return fetchChapters(1).pipe(
+    switchMap((data1) => {
+      return fetchChapters(2).pipe(
+        map((data2) => {
+          return [...data1, ...data2];
         })
-    );
+      );
+    })
+  );
 }
 
 function fetchChapters(page) {
-    const { chaptersService } = dependencies;
-
-    return chaptersService.getChapters(page).pipe(
-        map(data => data[Members]),
-    );
+  const { chaptersService } = dependencies;
+  return chaptersService.getChapters(page).pipe(map((data) => data[Members]));
 }
 
-
 function fetchAllSubChapters() {
-    return fetchSubChapters(1).pipe(
-        switchMap(data1 => {
-            return fetchSubChapters(2).pipe(
-                map(data2 => {
-                    return [
-                        ...data1,
-                        ...data2
-                    ]
-                }),
-            );
+  return fetchSubChapters(1).pipe(
+    switchMap((data1) => {
+      return fetchSubChapters(2).pipe(
+        map((data2) => {
+          return [...data1, ...data2];
         })
-    );
+      );
+    })
+  );
 }
 
 function fetchSubChapters(page) {
-    const { chaptersService } = dependencies;
+  const { chaptersService } = dependencies;
 
-    return chaptersService.getSubChapters(page).pipe(
-        map(data => data[Members]),
-    );
+  return chaptersService
+    .getSubChapters(page)
+    .pipe(map((data) => data[Members]));
 }
 
 function fetchAllSections() {
-    const { sectionsService } = dependencies;
+  const { sectionsService } = dependencies;
 
-    return sectionsService.getSections(1).pipe(
-        map(data => data[Members]),
-    );
+  return sectionsService.getSections(1).pipe(map((data) => data[Members]));
 }
 
 function extractId(strId) {
-    return strId.split('s/')[1];
+  return strId.split("s/")[1];
 }

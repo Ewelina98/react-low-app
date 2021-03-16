@@ -107,7 +107,7 @@ export const ArticlesDialog = ({ isOpen, onClose, chapter, article }) => {
                             const isSelected = selectedArticle?.id === article.id;
 
                             return (
-                                <div key={article.id + index}>
+                                <div key={index}>
                                     <ListItem button onClick={handleClick(article)} selected={isSelected} >
                                         <ListItemText primary={article.title} />
                                         {isSelected && (

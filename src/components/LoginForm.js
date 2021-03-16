@@ -24,10 +24,10 @@ export function LoginForm(props) {
             return;
         }
 
-        const email =  emailRef.current.value;
+        const email = emailRef.current.value;
         const password =  passwordRef.current.value;
         props.onSubmit(email, password);
-    }
+    };
 
     return (
         <Form>
