@@ -12,6 +12,7 @@ import tw from "twin.macro";
 import { SectionHeading } from "components/misc/Headings";
 import { colors } from "../Colors";
 import { ArticlesSearch } from "../Articles/ArticlesSearch";
+import { TabContext } from "@material-ui/lab";
 
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-500`;
@@ -96,7 +97,7 @@ export const VerticalTabs = (props) => {
             className={classes.tabs}
           >
             {tabsLables.map((label, index) => (
-              <Tab key={label + index} label={label} {...a11y(index)} />
+              <Tab className={classes.tab} key={label + index} label={label} {...a11y(index)} />
             ))}
           </Tabs>
         )}

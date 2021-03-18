@@ -35,7 +35,6 @@ export const ArticlesSearch = () => {
 
     const [articles, setArticles] = useState(null);
 
-    const [isOpen, setIsOpen] = useState(false);
     const [selectedArticle, setSelectedArticle] = useState(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -47,7 +46,6 @@ export const ArticlesSearch = () => {
 
     const handleItemClick = (article) => {
         setSelectedArticle(article);
-        setIsOpen(true);
         setIsDialogOpen(true);
     };
 
@@ -61,8 +59,7 @@ export const ArticlesSearch = () => {
     return (
         <>
         <Autocomplete
-            open={isOpen}
-            onInputChange={() => setIsOpen(true)}
+            openOnFocus={false}
             clearOnEscape={true}
             options={articles}
             noOptionsText={
@@ -71,18 +68,22 @@ export const ArticlesSearch = () => {
                 </ListItem>
             }
             getOptionLabel={article => article.content}
-            renderOption={(option) => (
-                <ListItem button onClick={() => handleItemClick(option)}>
-                    <ListItemText primary={option.title} secondary={option.content} />
-                </ListItem>
-            )}
+            renderOption={option => {
+                const content = option.content.slice(0, 200) + '...'
+
+                return (
+                    <ListItem button onClick={() => handleItemClick(option)}>
+                        <ListItemText primary={option.title} secondary={content} />
+                    </ListItem>
+                );
+            }}
             renderInput={(params) => 
                 <div className={classes.root}>
                     <TextField
-                    {...params}
-                    className={classes.input}
-                    disabled={!articles}
-                    label={'Szukaj...'}
+                        {...params}
+                        className={classes.input}
+                        disabled={!articles}
+                        label={'Szukaj artykułów'}
                     />
                 </div>
             }
