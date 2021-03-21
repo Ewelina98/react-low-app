@@ -9,6 +9,6 @@ export class UsersService {
       "Content-type": "application/json; charset=UTF-8",
     };
 
-    return this.networkingService.post("login", body, headers);
+    return this.networkingService.post("/users", body, headers);
   }
 }

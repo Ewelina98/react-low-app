@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { List, ListItem, ListItemText, Divider, Paper, InputBase, IconButton, makeStyles, Grid, TextField, InputAdornment } from "@material-ui/core";
-import SearchIcon from '@material-ui/icons/Search';
+import { ListItem, ListItemText, makeStyles, TextField } from "@material-ui/core";
 import { fetchAllArticlesMapped } from "services/fetshData";
 import { Autocomplete } from "@material-ui/lab";
 import { ArticlesDialog } from "./ArticlesDialog";
@@ -22,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
       height: 28,
       margin: 4,
     },
-
     result: {
         height: 500,
         position: 'relative',
@@ -34,6 +32,7 @@ export const ArticlesSearch = () => {
     const classes = useStyles();
 
     const [articles, setArticles] = useState(null);
+    const [value, setValue] = useState('')
 
     const [selectedArticle, setSelectedArticle] = useState(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -45,6 +44,8 @@ export const ArticlesSearch = () => {
     }, [fetchAllArticlesMapped]);
 
     const handleItemClick = (article) => {
+        setValue('');
+
         setSelectedArticle(article);
         setIsDialogOpen(true);
     };
@@ -59,6 +60,7 @@ export const ArticlesSearch = () => {
     return (
         <>
         <Autocomplete
+            inputValue={value}
             openOnFocus={false}
             clearOnEscape={true}
             options={articles}

@@ -393,7 +393,7 @@ export function RegisterStepper(props) {
         addressHouseNumber: value7,
         addressZipCode: value8,
         addressCity: value9,
-        addressVoivodeship: "string",
+        addressVoivodeship: value5,
         addressCountry: countries[selectedCountry],
         nutsCode: value10,
         nip: value11,
@@ -407,14 +407,12 @@ export function RegisterStepper(props) {
         additionalInformation: value19,
         bipClientType: value20,
         duueClientType: value21,
-        bipCoreBusiness: "string",
-        duueCoreBusiness: "string",
-      },
-      contractingAuthorityBranch: value5,
-
-      theObjectOfTheContracting: value22,
-      theObjectOfTheContracting2: value23,
+        bipCoreBusiness: value22,
+        duueCoreBusiness: value23,
+      },  
     };
+
+    console.log(data);
 
     props.onSubmit(data);
   };
